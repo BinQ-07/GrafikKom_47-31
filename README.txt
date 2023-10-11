@@ -1,4 +1,5 @@
-# GrafikKom_47-31
+# GrafikKom_31-47
 Anggota Kelompok : 
-1) Bintang Qaulan Tsaqiila (5222600047)
-2) Wahyu Indra Maulana (5222600031)
+1) Wahyu Indra Maulana (5222600031)
+2) Bintang Qaulan Tsaqiila (5222600047)
+
