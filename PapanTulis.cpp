@@ -1,5 +1,6 @@
 #define _USE_MATH_DEFINES 
 
+
 #include <iostream>
 #include <GL/glew.h>
 #include <GL/freeglut.h>
@@ -12,6 +13,8 @@ GLfloat boardXRotation = 0.0f; // Initial rotation around the X-axis
 GLfloat boardYRotation = 0.0f; // Initial rotation around the Y-axis
 GLfloat boardZRotation = 0.0f;
 
+int brushSize = 3, screenHeight= 800;
+float red = 0.0, green = 0.0, blue = 0.0;
 
 // Function to draw the 3D monitor and stand
 void drawMonitor() {
@@ -106,10 +109,13 @@ void reshape(int width, int height) {
     glMatrixMode(GL_MODELVIEW);
 }
 
+
+
 // Keyboard callback function for adjusting parameters
 void keyboard(unsigned char key, int x, int y) {
     switch (key) {
 
+    
     case 'z':
         boardZRotation += 5.0f; // Rotate board upward
         break;
@@ -144,26 +150,28 @@ void SpecialKey(int key, int x, int y) {
     glutPostRedisplay();
 }
 
-/*void mouseWheel(int wheel, int direction, int x, int y)
+void printInteraction(void)
 {
-    // Increment/decrement size of current point (at the back of vector points)
-    // depending on the direction of rotation of the mouse wheel.
-    (direction > 0) ? tempZ++ : tempZ--;
-    //points.back().setSize(tempSize);
+    std::cout << "Interaction:" << std::endl;
+    std::cout << "Tekan tombol panah untuk memutar papan tulis" << std::endl
+        << "Tekan tombol Z atau X untuk memutar di sumbu z" << std::endl;
+        
+}
 
-    glutPostRedisplay();
-}*/
 
 int main(int argc, char** argv) {
+    printInteraction();
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-    glutInitWindowSize(800, 800);
+    glutInitWindowSize(800, screenHeight);
     glutCreateWindow("Papan Tulis");
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(SpecialKey);
+    
+
 
     glEnable(GL_DEPTH_TEST);
 
